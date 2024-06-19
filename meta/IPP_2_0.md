@@ -10,7 +10,7 @@ Next, an IPP `Create-Job` request is sent from the host to the printer. It conta
 
 Lastly, the host sends an IPP `Send-Document` request. It starts again with a HTTP POST request and a meta data packet, before the printer responds with a HTTP 100 message. Then, the document is sent in one ore more chunks. Finally, the printer responds with a status code of 200 and acknowledges some meta information like the job-ID.
 
-After the print job has been sent, we can observe an alternating pattern of IPP `Get-Printer-Attributes` and `Get-Job-Attributes` request. Analogous to before, these are requests from the host to the printer which asks for metadata on the printer or the jobs. The `pcap2job` parser ignores these `Get-Printer-Attributes` and `Get-Job-Attributes` conversations as they do not contain a lot of specific data to the printed job itself. And information like the user issuing the print are also included in the `Create-Job` and `Send-Document` request.
+After the print job has been sent, we can observe an alternating pattern of IPP `Get-Printer-Attributes` and `Get-Job-Attributes` request. Analogous to before, these are requests from the host to the printer which asks for metadata on the printer or the jobs. The `pcap2printjob` parser ignores these `Get-Printer-Attributes` and `Get-Job-Attributes` conversations as they do not contain a lot of specific data to the printed job itself. And information like the user issuing the print are also included in the `Create-Job` and `Send-Document` request.
 
 ## Hexdump Analysis - IPP over HTTP
 
@@ -228,7 +228,7 @@ This last packet is specfial as in this example, it concatenates multiple things
 
 ## How the Parser Works
 
-In this section, I want to give a brief overview on how the IPP parser works. This should be understood as a guideline to better understand the source code but by no means replaces following the code directly. The following annotated "main" function of the ipp.py file gives a god overview over the steps undertaken to convert the network traffic into a usable printjob:
+In this section, I want to give a brief overview on how the IPP parser works. This should be understood as a guideline to better understand the source code but by no means replaces following the code directly. The following annotated "main" function of the ipp.py file gives a good overview over the steps undertaken to convert the network traffic into a usable printjob:
 
 ```python
 

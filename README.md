@@ -6,14 +6,14 @@
 | .__/ \___\__,_| .__/_____|/ |\___/|_.__/
 |_|             |_|       |__/
 
-pcap2job by mightychoc
-github.com/mightychoc/pcap2job
+pcap2printjob by mightychoc
+github.com/mightychoc/pcap2printjob
 
 ```
 
 ![Static Badge](https://img.shields.io/badge/IPP-2.0-008000?style=for-the-badge)
 
-`pcap2job` is a tool for reversing print jobs from captured network traffic. It currently supports unencrypted CUPS IPP 2.0 traffic, but it is planed to extend the tool for other printing protocols in the future.
+`pcap2printjob` is a tool for reversing print jobs from captured network traffic. It currently supports unencrypted CUPS IPP 2.0 traffic, but it is planed to extend the tool for other printing protocols in the future.
 
 ### Dependencies and Used Technologies
 
@@ -25,7 +25,7 @@ github.com/mightychoc/pcap2job
 
 ### IPP 2.0
 
-- [ ] `pcap2job` cannot parse the job-attributes media struct in the IPP create-job request. Hence we simply skip this information at the moment...
+- [ ] `pcap2printjob` cannot parse the job-attributes media struct in the IPP create-job request. Hence we simply skip this information at the moment...
 - [ ] Unknown what happens to the program, if the TCP-footer is not empty
 - [ ] There are other possible tags which IPP can set according to the specification. Unclear how we can handle this due to lack of testing data.
 
