@@ -59,7 +59,7 @@ Next, we have the actual `Create-Job` payload. Its structure is as follows:
 0000011C  65 73 2d 6e 61 74 75 72  61 6c 2d 6c 61 6e 67 75   es-natur al-langu
 0000012C  61 67 65 00 05 65 6e 2d  75 73 45 00 0b 70 72 69   age..en- usE..pri
 0000013C  6e 74 65 72 2d 75 72 69  00 28 69 70 70 3a 2f 2f   nter-uri .(ipp://
-0000014C  48 50 42 30 32 32 37 41  39 31 33 38 30 31 2e 6c   HPB0227A 913801.l
+0000014C  XX XX XX XX XX XX XX XX  XX XX XX XX XX XX 2e 6c   XXXXXXXX XXXXXX.l
 0000015C  6f 63 61 6c 3a 36 33 31  2f 69 70 70 2f 70 72 69   ocal:631 /ipp/pri
 0000016C  6e 74 42 00 14 72 65 71  75 65 73 74 69 6e 67 2d   ntB..req uesting-
 0000017C  75 73 65 72 2d 6e 61 6d  65 00 05 63 68 6f 63 6f   user-nam e..choco
@@ -116,15 +116,19 @@ This pattern is consistent for all key-value pairs observed, in the `Create-Job`
 The `Send-Document` request in starts analogously to the `Create-Job` transmission. First, a POST request is issued, containing key-value pairs separated by `0d 0a`. Next, as `Transfer-Encoding` is specified as `chunked`, we have a packet containing `66 34 0d 0a`. This packet specifies the length of the next data chunk: `66 34` translates to `0xf4` which in decimal is 244 - which corresponds to the length of 244 bytes. Next, we again have two bytes for the IPP version (`02 00`), two bytes for the IPP operation (`00 06` meaning `Send-Document`) and four bytes indicating the request ID (`00 00 00 05`). Again, `01` marks the beginning of the operation attributes. However, this time, we directly have a end-of-attributes tag `03` and no job attributes specified. Furthermore, notice how every chunk/packet is again separated by `0d 0a`.
 
 
+          4d 6f 6e 2c  20 31 30 20 4a 61 6e 20   te: Mon,  01 Jan 
+00000060  31 39 39 30 20 30 30 3a  30 30 3a 30 30 20 47 4d   1990 00: 00:00 GM
+00000070  54
+
 ```
 00000000  50 4f 53 54 20 2f 69 70  70 2f 70 72 69 6e 74 20   POST /ip p/print 
 00000010  48 54 54 50 2f 31 2e 31  0d 0a 43 6f 6e 74 65 6e   HTTP/1.1 ..Conten
 00000020  74 2d 54 79 70 65 3a 20  61 70 70 6c 69 63 61 74   t-Type:  applicat
-00000030  69 6f 6e 2f 69 70 70 0d  0a 44 61 74 65 3a 20 54   ion/ipp. .Date: T
-00000040  68 75 2c 20 30 36 20 4a  75 6e 20 32 30 32 34 20   hu, 06 J un 2024 
-00000050  31 34 3a 33 39 3a 30 36  20 47 4d 54 0d 0a 48 6f   14:39:06  GMT..Ho
-00000060  73 74 3a 20 48 50 42 30  32 32 37 41 39 31 33 38   st: HPB0 227A9138
-00000070  30 31 2e 6c 6f 63 61 6c  3a 36 33 31 0d 0a 54 72   01.local :631..Tr
+00000030  69 6f 6e 2f 69 70 70 0d  0a 44 61 74 65 3a 20 4d   ion/ipp. .Date: M
+00000040  6f 6e 2c 20 31 30 20 4a  61 6e 20 31 39 39 30 20   on, 01 J an 1990 
+00000050  30 30 3a 30 30 3a 30 30  20 47 4d 54 0d 0a 48 6f   00:00:00  GMT..Ho
+00000060  73 74 3a 20 XX XX XX XX  XX XX XX XX XX XX XX XX   st: XXXX XXXXXXXX
+00000070  XX XX 2e 6c 6f 63 61 6c  3a 36 33 31 0d 0a 54 72   XX.local :631..Tr
 00000080  61 6e 73 66 65 72 2d 45  6e 63 6f 64 69 6e 67 3a   ansfer-E ncoding:
 00000090  20 63 68 75 6e 6b 65 64  0d 0a 55 73 65 72 2d 41    chunked ..User-A
 000000A0  67 65 6e 74 3a 20 43 55  50 53 2f 32 2e 34 2e 37   gent: CU PS/2.4.7
@@ -142,8 +146,8 @@ The `Send-Document` request in starts analogously to the `Create-Job` transmissi
 00000123  69 62 75 74 65 73 2d 6e  61 74 75 72 61 6c 2d 6c   ibutes-n atural-l
 00000133  61 6e 67 75 61 67 65 00  05 65 6e 2d 75 73 45 00   anguage. .en-usE.
 00000143  0b 70 72 69 6e 74 65 72  2d 75 72 69 00 28 69 70   .printer -uri.(ip
-00000153  70 3a 2f 2f 48 50 42 30  32 32 37 41 39 31 33 38   p://HPB0 227A9138
-00000163  30 31 2e 6c 6f 63 61 6c  3a 36 33 31 2f 69 70 70   01.local :631/ipp
+00000153  70 3a 2f 2f XX XX XX XX  XX XX XX XX XX XX XX XX   p://XXXX XXXXXXXX
+00000163  XX XX 2e 6c 6f 63 61 6c  3a 36 33 31 2f 69 70 70   XX.local :631/ipp
 00000173  2f 70 72 69 6e 74 21 00  06 6a 6f 62 2d 69 64 00   /print!. .job-id.
 00000183  04 00 00 00 0b 42 00 14  72 65 71 75 65 73 74 69   .....B.. requesti
 00000193  6e 67 2d 75 73 65 72 2d  6e 61 6d 65 00 05 63 68   ng-user- name..ch
@@ -165,8 +169,6 @@ Again, `31 30 30 30 30` translates to `0x10000` which means 65536 bytes. Then, t
 
 ```
 000001F4  1f 8b 08 00 00 00 00 00  00 03 ec d5 4d 6f 2c 49   ........ ....Mo,I
-          ...
-00000204  76 de f1 60 66 64 55 be  d4 25 d9 ec 19 43 b0 81   v..`fdU. .%...C..
           ...
 00001E24  f1 3e da d0 f0 82 ca b2  c6 18 63 8c 33 7e 19 1a   .>...... ..c.3~..
 00001E34  3b 43 69 d9 62 8c 31 c6                            ;Ci.b.1. 

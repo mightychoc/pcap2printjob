@@ -36,9 +36,9 @@ Of course, all data submitted is treated confidential. -->
 
 - [ ] `pcap2job` cannot parse the job-attributes media struct in the IPP create-job request. Hence we simply skip this information at the moment...
 - [ ] Unknown what happens to the program, if the TCP-footer is not empty
-- [ ] There are other possible tags which IPP can set according to the specification. Unclear how we can handle this.
+- [ ] There are other possible tags which IPP can set according to the specification. Unclear how we can handle this due to lack of testing data.
 
 ### General
 
 - [ ] Use multithreading to process multiple pcap files / multiple jobs in a pcap file in parallel.
-- [ ] "Magic mode" to identify which protocols might even be present in a given pcap file.
+- [ ] "Magic mode" to identify which protocols might even be present in a given pcap file. This can be done by looking for specific destination ports (9100, 631...)
