@@ -21,15 +21,6 @@ github.com/mightychoc/pcap2job
 - [ppm2pwg](https://github.com/attah/ppm2pwg) - Open source PWG/URF to Netpbm converter
 - [Wireshark / tshark](https://www.wireshark.org/) - Network protocol analyser
 
-<!-- ## Want to support the project?
-
-If you want to support me with this project, feel free to share your printer traffic with you :)
-
-> [!WARNING]
-> Obviously, as the goal of this project is to reverse engineer the print job, the file you printed is visible in the end. Furthermore, meta-data like your user-name, the name of the file or the time of printing can be leaked.
-
-Of course, all data submitted is treated confidential. -->
-
 ## Improvements
 
 ### IPP 2.0
