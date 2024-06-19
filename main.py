@@ -124,6 +124,6 @@ if __name__ == "__main__":
 
     check_requirements()
 
-    outdir = output.create_output_dir(top_outpath, args.force)
+    outdir = output.create_output_dir(top_outpath)
 
-    ipp.extract_ipp_jobs(infile, outdir, dir_structure)
+    ipp.extract_ipp_jobs(infile, outdir, dir_structure, args.force)

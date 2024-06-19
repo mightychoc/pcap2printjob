@@ -390,7 +390,7 @@ def pwg2ppm(
         exit(1)
 
 
-def extract_ipp_jobs(infile: str, outpath: str, structure: DirStructure) -> None:
+def extract_ipp_jobs(infile: str, outpath: str, structure: DirStructure, force: bool) -> None:
     """Extracts all IPP print jobs from a pcap file.
 
     Args:
@@ -400,7 +400,7 @@ def extract_ipp_jobs(infile: str, outpath: str, structure: DirStructure) -> None
     """
 
     ipp_streams = get_raw_jobs(infile)
-    output.create_output_substructure(outpath, structure, len(ipp_streams))
+    output.create_output_substructure(outpath, structure, force, len(ipp_streams))
     output.write_raw_streams(ipp_streams, outpath, structure)
 
     for i, stream in enumerate(ipp_streams):
